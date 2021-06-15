@@ -193,7 +193,7 @@ module.exports = {
     // 热更新配置
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:5].css',
+      filename: 'css/[name].css',
       chunkFilename: 'css/[id].[contenthash:5].css',
     }),
     // 压缩css。

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'dva';
 import { Button } from 'antd';
+import cn from 'classnames';
 
+import './index.less';
 @connect(state => state)
 class Home extends Component {
   constructor(props) {
@@ -18,8 +20,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <div>这是首页。</div>
+      <div className={cn('home')}>
+        <div className={cn('page')}>这是首页。111</div>
         <Button type="primary" onClick={() => this.getData('get')}>获取（/get）请求数据</Button><br />
         <Button type="primary" onClick={() => this.getData('post')}>获取（/post）请求数据</Button><br />
       </div>
