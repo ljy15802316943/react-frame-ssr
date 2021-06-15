@@ -12,13 +12,11 @@ const WebpackBar = require('webpackbar');
 
 module.exports = {
   // 入口文件
-  entry: {
-    main: [
+  entry: [
       // 生产环境的入口建议把这个去掉, 因为会造成css文件不能解析。
-      process.env.TYPE === 'development' && 'webpack-hot-middleware/client?noInfo=true&reload=true', 
+      ...(process.env.TYPE === 'development' ? ['webpack-hot-middleware/client?noInfo=true&reload=true'] : []), 
       join(process.cwd(), 'src', 'index.js'),
-    ]
-  },
+  ],
   // 打包出口文件
   output: {
     // 输出文件名
@@ -38,6 +36,7 @@ module.exports = {
           {
             test: /\.css$/,
             use: [
+              'css-hot-loader',
               {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
@@ -52,6 +51,7 @@ module.exports = {
           {
             test: /\.less$/,
             use: [
+              'css-hot-loader',
               {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
